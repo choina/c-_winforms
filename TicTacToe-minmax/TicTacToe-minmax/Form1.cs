@@ -23,5 +23,45 @@ namespace TicTacToe_minmax
         {
             game.ruch(0);
         }
+
+        private void pole1_Click(object sender, EventArgs e)
+        {
+            game.ruch(1);
+        }
+
+        private void pole2_Click(object sender, EventArgs e)
+        {
+            game.ruch(2);
+        }
+
+        private void pole3_Click(object sender, EventArgs e)
+        {
+            game.ruch(3);
+        }
+
+        private void pole4_Click(object sender, EventArgs e)
+        {
+            game.ruch(4);
+        }
+
+        private void pole5_Click(object sender, EventArgs e)
+        {
+            game.ruch(5);
+        }
+
+        private void pole6_Click(object sender, EventArgs e)
+        {
+            game.ruch(6);
+        }
+
+        private void pole7_Click(object sender, EventArgs e)
+        {
+            game.ruch(7);
+        }
+
+        private void pole8_Click(object sender, EventArgs e)
+        {
+            game.ruch(8);
+        }
     }
 }

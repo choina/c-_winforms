@@ -139,6 +139,7 @@
             this.pole1.Size = new System.Drawing.Size(150, 150);
             this.pole1.TabIndex = 23;
             this.pole1.TabStop = false;
+            this.pole1.Click += new System.EventHandler(this.pole1_Click);
             // 
             // pole2
             // 
@@ -148,6 +149,7 @@
             this.pole2.Size = new System.Drawing.Size(150, 150);
             this.pole2.TabIndex = 24;
             this.pole2.TabStop = false;
+            this.pole2.Click += new System.EventHandler(this.pole2_Click);
             // 
             // pole3
             // 
@@ -157,6 +159,7 @@
             this.pole3.Size = new System.Drawing.Size(150, 150);
             this.pole3.TabIndex = 25;
             this.pole3.TabStop = false;
+            this.pole3.Click += new System.EventHandler(this.pole3_Click);
             // 
             // pole4
             // 
@@ -166,6 +169,7 @@
             this.pole4.Size = new System.Drawing.Size(150, 150);
             this.pole4.TabIndex = 26;
             this.pole4.TabStop = false;
+            this.pole4.Click += new System.EventHandler(this.pole4_Click);
             // 
             // pole5
             // 
@@ -175,6 +179,7 @@
             this.pole5.Size = new System.Drawing.Size(150, 150);
             this.pole5.TabIndex = 27;
             this.pole5.TabStop = false;
+            this.pole5.Click += new System.EventHandler(this.pole5_Click);
             // 
             // pole6
             // 
@@ -184,6 +189,7 @@
             this.pole6.Size = new System.Drawing.Size(150, 150);
             this.pole6.TabIndex = 28;
             this.pole6.TabStop = false;
+            this.pole6.Click += new System.EventHandler(this.pole6_Click);
             // 
             // pole7
             // 
@@ -193,6 +199,7 @@
             this.pole7.Size = new System.Drawing.Size(150, 150);
             this.pole7.TabIndex = 29;
             this.pole7.TabStop = false;
+            this.pole7.Click += new System.EventHandler(this.pole7_Click);
             // 
             // pole8
             // 
@@ -202,6 +209,7 @@
             this.pole8.Size = new System.Drawing.Size(150, 150);
             this.pole8.TabIndex = 30;
             this.pole8.TabStop = false;
+            this.pole8.Click += new System.EventHandler(this.pole8_Click);
             // 
             // Form1
             // 
