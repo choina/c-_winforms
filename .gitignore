@@ -87,6 +87,17 @@ ipch/
 *.VC.db
 *.VC.VC.opendb
 
+# C++
+*.~bpr
+*.res
+*.tds
+*.~cpp
+*.~dfm
+*.~h
+*.layout
+*.o
+*.depend
+
 # Visual Studio profiler
 *.psess
 *.vsp
