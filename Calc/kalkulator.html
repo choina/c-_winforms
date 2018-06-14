@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kalkulator</title>
+ <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="css2.css">
+ <script type="text/javascript" src="java.js"> </script>
+</head>
+<body background="old-calculator.jpg">
+<div id="tlo">
+	<center><h2>Kalkulator</h2></center>
+	<table>
+	<form method="POST">
+	<tr>
+	<td colspan="4"> <input type="text" id="wysw" class="form-field"> </input> </td>
+	</tr>
+	<tr>
+	<td colspan="2"><input type="reset" class="submit-button2" value="C" onclick="usun()" ></td>
+	
+	
+	<td colspan="2"><input class="submit-button2" type="button" value="=" onclick="glowna(this)" /></td>
+	</tr>
+	<tr>
+	<td><input class="submit-button" type="button" value="1" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="2" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="3" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="+" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="!" onclick="glowna(this)" /></td>
+	</tr>
+	<tr>
+	<td><input class="submit-button" type="button" value="4" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="5" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="6" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="-" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="^" onclick="glowna(this)" /></td>
+	</tr>
+	<tr>
+	<td><input class="submit-button" type="button" value="7" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="8" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="9" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="*" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" id="pierwiastek" type="button" value="&radic;" onclick="glowna(this)" /></td>
+	</tr>
+	<tr>
+	<td><input class="submit-button" type="button" value="%" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="0" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="." onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="/" onclick="glowna(this)" /></td>
+	<td><input class="submit-button" type="button" value="test" onclick="test()" /></td>
+	</tr>
+	
+	
+	</form>
+	</table>
+	
+	<span id="test"></span>
+	
+</div>
+</body>
+</html>
