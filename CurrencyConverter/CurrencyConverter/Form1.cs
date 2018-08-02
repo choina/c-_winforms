@@ -15,10 +15,12 @@ namespace CurrencyConverter
 {
     public partial class Form1 : Form
     {
+        private const string code = "kod_waluty";
+        public static string Code => code;
         List<float> list = new List<float>(); //List with currency exchange rates
-        float usd = new float();
-        float eur = new float();
-        float gbp = new float();
+        int[] table_list = new int[5];
+
+
         private void UpdatePr()
         {
             List <string> files = new List<string>();
@@ -41,38 +43,45 @@ namespace CurrencyConverter
                 }
 
             }
+
             rr.Close();
             XPathDocument document = new XPathDocument("http://www.nbp.pl/kursy/xml/" + files[files.Count - 1] + ".xml");
             XPathNavigator navigator = document.CreateNavigator();
             XPathNodeIterator iterator;
             iterator = navigator.Select("tabela_kursow");
-
             iterator = navigator.Select("tabela_kursow/pozycja");
+
             foreach(XPathNavigator nav in iterator)
             {
-                    if(nav.SelectSingleNode("kod_waluty").Value == "USD")
+                    if(nav.SelectSingleNode(Code).Value == "USD")
                     {
-                    usd = float.Parse(nav.SelectSingleNode("kurs_sredni").Value);
+                    list.Insert(0, float.Parse(nav.SelectSingleNode("kurs_sredni").Value));
+                    //0 = USD
                     }
-                    if (nav.SelectSingleNode("kod_waluty").Value == "GBP")
+                    if (nav.SelectSingleNode(Code).Value == "EUR")
                     {
-                    gbp = float.Parse(nav.SelectSingleNode("kurs_sredni").Value);
-                }
-                    if (nav.SelectSingleNode("kod_waluty").Value == "EUR")
+                    list.Insert(1, float.Parse(nav.SelectSingleNode("kurs_sredni").Value));
+                    //1 = EUR
+                    }
+                    if (nav.SelectSingleNode(Code).Value == "GBP")
                     {
-                    eur = float.Parse(nav.SelectSingleNode("kurs_sredni").Value);               }
+                    list.Insert(2, float.Parse(nav.SelectSingleNode("kurs_sredni").Value));
+                    //2 = GBP
+                    }
             }
         }
+
         public Form1()
         {
             InitializeComponent();
             UpdatePr();
         }
+
         //Only numbers in textbox
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)
-;        }
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -84,34 +93,49 @@ namespace CurrencyConverter
             else
             {
                 float amount = float.Parse(textBox1.Text);
-                float rate = new float();
-                float rate2 = new float();
-                if (comboBox2.SelectedIndex == 0)
-                    rate = usd;
-                else if (comboBox2.SelectedIndex == 1)
-                    rate = gbp;
-                else if (comboBox2.SelectedIndex == 2)
-                    rate = eur;
-                else if (comboBox2.SelectedIndex == 3)
-                    rate = 1;
+                float rate1 = 1;
+                float rate2 = 1;
 
-                if (comboBox1.SelectedIndex == 0)
-                    rate2 = usd;
-                else if (comboBox1.SelectedIndex == 1)
-                    rate2 = gbp;
-                else if (comboBox1.SelectedIndex == 2)
-                    rate2 = eur;
-                else if (comboBox1.SelectedIndex == 3)
-                    rate2 = 1;
-                //PLN in combobox1
+                if (comboBox1.SelectedIndex == comboBox1.FindStringExact("USD"))
+                {
+                    rate1 = list[0];
+                }
+                else if (comboBox1.SelectedIndex == comboBox1.FindStringExact("EUR"))
+                {
+                    rate1 = list[1];
+                }
+                else if (comboBox1.SelectedIndex == comboBox1.FindStringExact("GBP"))
+                {
+                    rate1 = list[2];
+                }
+
+
+
+
+                if (comboBox2.SelectedIndex == comboBox1.FindStringExact("USD"))
+                {
+                    rate2 = list[0];
+                }
+                else if (comboBox2.SelectedIndex == comboBox1.FindStringExact("EUR"))
+                {
+                    rate2 = list[1];
+                }
+                else if (comboBox2.SelectedIndex == comboBox1.FindStringExact("GBP"))
+                {
+                    rate2 = list[2];
+                }
+
+
+                //PLN in comboBox1
                 if (this.comboBox1.SelectedIndex == 3)
                 {
-                    label1.Text = (amount / rate).ToString();
+                    label1.Text = (amount / rate2).ToString();
                 }
+
                 else
                 {
-                    float pom = amount * rate2;
-                    label1.Text = (pom / rate).ToString();
+                    float pom = amount * rate1;
+                    label1.Text = (pom / rate2).ToString();
                 }
             }
         }
