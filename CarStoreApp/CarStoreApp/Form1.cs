@@ -14,25 +14,37 @@ namespace CarStoreApp
 {
     public partial class Form1 : Form
     {
+        string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\database.xml";
         private void ShowBase()
         {
-            listBox.Items.Clear();
+            listView1.Items.Clear();
             XmlDocument doc = new XmlDocument();
-            doc.Load("D:\\C# PROJECTS\\CarStoreApp\\CarStoreApp\\database.xml");
+            doc.Load(path);
 
             foreach (XmlNode node in doc.DocumentElement)
             {
                 foreach (XmlNode child in node.ChildNodes)
                 {
-                    listBox.Items.Add(child.InnerText);
+                    listView1.Items.Add(child.InnerText);
                 }
-                listBox.Items.Add(" ");
+               // listView1.Items.Add(" ");
+            }
+        }
+        private void Rmv()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            if (listView1.SelectedIndices[0] < doc.DocumentElement.ChildNodes.Count)
+            {
+                doc.DocumentElement.RemoveChild(doc.DocumentElement.ChildNodes[listView1.FocusedItem.Index]);
+                doc.Save(path);
+                ShowBase();
             }
         }
         private void SaveBase()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("D:\\C# PROJECTS\\CarStoreApp\\CarStoreApp\\database.xml");
+            doc.Load(path);
             XmlNode car = doc.CreateElement("car");
             XmlNode brand = doc.CreateElement("brand");
             brand.InnerText = Brand.Text;
@@ -47,7 +59,7 @@ namespace CarStoreApp
             mileage.InnerText = Mileage.Text;
             car.AppendChild(mileage);
             doc.DocumentElement.AppendChild(car);
-            doc.Save("D:\\C# PROJECTS\\CarStoreApp\\CarStoreApp\\database.xml");
+            doc.Save(path);
         }
         public Form1()
         {
@@ -68,6 +80,7 @@ namespace CarStoreApp
             }
             else
                 SaveBase();
+            ShowBase();
         }
 
         private void Year_KeyPress(object sender, KeyPressEventArgs e)
@@ -92,6 +105,15 @@ namespace CarStoreApp
             {
                 e.Handled = true;
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Rmv();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
         }
     }
 }

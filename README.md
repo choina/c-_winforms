@@ -18,7 +18,7 @@ It's simple currency converter with current exchange rate(loading from NBP datab
 
 ### CarStoreApp
 ```
-Car store application with XML database
+Car store application with XML database(database.xml must be located in the executable path)
 ```
 
 ### SPOJ
